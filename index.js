@@ -28,7 +28,6 @@ app.post('/bfhl', (req, res) => {
 
     return res.status(200).json(result);
   } catch (err) {
-    // Return graceful error with is_success false but keep 200 as per "successful requests: 200"
     return res.status(200).json({
       is_success: false,
       error: err?.message || 'Unexpected error',
@@ -45,11 +44,13 @@ app.post('/bfhl', (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-});
+// ✅ New GET /bfhl route (before listen)
 app.get("/bfhl", (req, res) => {
   res.json({
     message: "Welcome to BFHL API 🚀. Use POST /bfhl with JSON body to test."
   });
+});
+
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
 });
