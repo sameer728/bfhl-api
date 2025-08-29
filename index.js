@@ -48,3 +48,8 @@ app.post('/bfhl', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
+app.get("/bfhl", (req, res) => {
+  res.json({
+    message: "Welcome to BFHL API 🚀. Use POST /bfhl with JSON body to test."
+  });
+});
